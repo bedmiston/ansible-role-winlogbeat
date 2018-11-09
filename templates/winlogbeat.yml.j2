@@ -24,6 +24,9 @@ output:
 {% if winlogbeat_output_elasticsearch_hosts  %}
   elasticsearch:
     hosts: {{ winlogbeat_output_elasticsearch_hosts | to_nice_yaml(indent=2) }}
+{% if winlogbeat_output_elasticsearch_hosts  %}
+    pipeline: {{ winlogbeat_output_elasticsearch_pipeline }}
+{% endif %}
 {% if winlogbeat_ssl_enabled %}
     # If any 'ssl' parameters are included, defaults to 'true', otherwise defaults to 'false'.  
     # Can force true or false independent of ssl section settings

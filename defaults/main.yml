@@ -15,6 +15,7 @@ winlogbeat_fields_under_root:
 
 winlogbeat_output_elasticsearch_hosts:
 #  - "localhost:9200"
+winlogbeat_output_elasticsearch_pipeline:
 
 winlogbeat_output_logstash_hosts:
 #  - "localhost:5044"
