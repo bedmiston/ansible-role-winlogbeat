@@ -2,16 +2,16 @@
 
 # Events
 winlogbeat.event_logs:
-  {{ winlogbeat_event_logs | to_json }}
+  {{ winlogbeat_event_logs | to_nice_yaml(indent=2) }}
 
 # Fields and tags
 
 {% if winlogbeat_tags  %}
-tags: {{ winlogbeat_tags | to_json }}
+tags: {{ winlogbeat_tags | to_nice_yaml(indent=2) }}
 {% endif %}
 
 {% if winlogbeat_fields  %}
-fields: {{ winlogbeat_fields | to_json }}
+fields: {{ winlogbeat_fields | to_nice_yaml(indent=2) }}
 {% endif %}
 
 {% if winlogbeat_fields_under_root  %}
@@ -23,7 +23,7 @@ fields_under_root: {{ winlogbeat_fields_under_root }}
 output:
 {% if winlogbeat_output_elasticsearch_hosts  %}
   elasticsearch:
-    hosts: {{ winlogbeat_output_elasticsearch_hosts | to_json }}
+    hosts: {{ winlogbeat_output_elasticsearch_hosts | to_nice_yaml(indent=2) }}
 {% if winlogbeat_ssl_enabled %}
     # If any 'ssl' parameters are included, defaults to 'true', otherwise defaults to 'false'.  
     # Can force true or false independent of ssl section settings
@@ -49,27 +49,27 @@ output:
 
 {% if winlogbeat_output_logstash_hosts %}
   logstash:
-    hosts: {{ winlogbeat_output_logstash_hosts | to_json }}
+    hosts: {{ winlogbeat_output_logstash_hosts | to_nice_yaml(indent=2) }}
 {% if winlogbeat_ssl_enabled %}
     # If any 'ssl' parameters are included, defaults to 'true', otherwise defaults to 'false'.
     # Can force true or false independent of ssl section settings
     ssl.enabled: {{ winlogbeat_ssl_enabled }}
 {% endif %}
 {% if winlogbeat_ssl_certificate_authorities %}
-    ssl.certificate_authorities: {{ winlogbeat_ssl_certificate_authorities | to_json }}
+    ssl.certificate_authorities: {{ winlogbeat_ssl_certificate_authorities | to_nice_yaml(indent=2) }}
 {% endif %}
 {% if winlogbeat_ssl_verification_mode %}
     ssl.verification_mode: {{ winlogbeat_ssl_verification_mode }}
 {% endif %}
 {% if winlogbeat_ssl_cipher_suites %}
-    ssl.cipher_suites: {{ winlogbeat_ssl_cipher_suites | to_json }}
+    ssl.cipher_suites: {{ winlogbeat_ssl_cipher_suites | to_nice_yaml(indent=2) }}
 {% endif %}
 {% if winlogbeat_ssl_curve_types %}
     # Configure curve types for ECDHE based cipher suites
     ssl.curve_types: {{ winlogbeat_ssl_curve_types | to_json }}
 {% endif %}
 {% if winlogbeat_ssl_supported_protocols %}
-    ssl.supported_protocols: {{ winlogbeat_ssl_supported_protocols | to_json}}
+    ssl.supported_protocols: {{ winlogbeat_ssl_supported_protocols | to_nice_yaml(indent=2)}}
 {% endif %}
 {% endif %}
 
