@@ -66,7 +66,7 @@ output:
 {% endif %}
 {% if winlogbeat_ssl_curve_types %}
     # Configure curve types for ECDHE based cipher suites
-    ssl.curve_types: {{ winlogbeat_ssl_curve_types | to_json }}
+    ssl.curve_types: {{ winlogbeat_ssl_curve_types | to_nice_yaml(indent=2) }}
 {% endif %}
 {% if winlogbeat_ssl_supported_protocols %}
     ssl.supported_protocols: {{ winlogbeat_ssl_supported_protocols | to_nice_yaml(indent=2)}}
