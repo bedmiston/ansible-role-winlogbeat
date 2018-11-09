@@ -1,12 +1,11 @@
----
-
-winlogbeat_download_url_base: 'https://artifacts.elastic.co/downloads/beats/winlogbeat'
-file_ext: '.zip'
-winlogbeat_download_file: 'winlogbeat-6.3.0-windows-x86_64'
+winlogbeat_download_url_base: "https://artifacts.elastic.co/downloads/beats/winlogbeat"
+file_ext: ".zip"
+winlogbeat_download_file: "winlogbeat-6.3.0-windows-x86_64"
 winlogbeat_install_location: "C:/Program Files/Winlogbeat"
 
 winlogbeat_event_logs:
   - name: Application
+    ignore_older: 72h
   - name: Security
   - name: System
 
@@ -20,10 +19,10 @@ winlogbeat_output_elasticsearch_hosts:
 winlogbeat_output_logstash_hosts:
 #  - "localhost:5044"
 
-winlogbeat_enable_logging: false
-winlogbeat_log_level: warning
-winlogbeat_log_dir: "{{ winlogbeat_install_location }}/{{ winlogbeat_download_file }}/logs"
-winlogbeat_log_filename: mybeat.log
+winlogbeat_enable_logging: true
+winlogbeat_log_level: info
+winlogbeat_log_dir: "{{ winlogbeat_install_location }}/logs"
+winlogbeat_log_filename: winlogbeat.log
 
 winlogbeat_ssl_certificate_authorities: #Collection
 #  - "C:\trust_store\ca.pem"
